@@ -1,0 +1,215 @@
+﻿<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/fc70e565e8.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Assignment 4</title>
+
+    <style>
+      body {
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        margin: 0 auto;
+        padding-top: 5%;
+        padding-right: 20%;
+        padding-left: 20%;
+      }
+
+      .input-group-icon {
+        width: 45px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="lblTrip">Trip Type</span>
+            </div>
+            <select
+              class="form-control"
+              name="trip"
+              id="trip"
+              aria-label="trip"
+              aria-describedby="lblTrip"
+            >
+              <option value="One-Way">One-Way</option>
+              <option value="Round-trip">Round-trip</option>
+              <option value="Multi-city">Multi-city</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <form action="submit" method="post">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text input-group-icon" id="lblFrom"
+                  ><i class="fa-solid fa-plane-departure"></i
+                ></span>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="From"
+                name="from"
+                id="from"
+                aria-label="from"
+                aria-describedby="lblFrom"
+                required
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text input-group-icon" id="lblTo"
+                  ><i class="fa-solid fa-plane-arrival"></i
+                ></span>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="To"
+                name="to"
+                id="to"
+                aria-label="to"
+                aria-describedby="lblTo"
+                required
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text input-group-icon" id="lblDepart"
+                  ><i class="fa-solid fa-calendar-days"></i
+                ></span>
+              </div>
+              <input
+                class="form-control"
+                placeholder="Departure Date"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')"
+                name="depart"
+                id="departDate1"
+                aria-label="depart"
+                aria-describedby="lblDepart"
+                required
+              />
+            </div>
+
+            <div class="input-group mb-3" id="round-trip" hidden>
+              <div class="input-group-prepend">
+                <span class="input-group-text input-group-icon" id="lblReturn"
+                  ><i class="fa-solid fa-calendar-days"></i
+                ></span>
+              </div>
+              <input
+                class="form-control"
+                placeholder="Return Date"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')"
+                name="return"
+                id="returnDate"
+                aria-label="return"
+                aria-describedby="lblReturn"
+                required
+              />
+            </div>
+
+            <div id="multi-city" hidden>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text input-group-icon" id="lblFrom"
+                    ><i class="fa-solid fa-plane-departure"></i
+                  ></span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="From"
+                  name="from"
+                  id="from"
+                  aria-label="from"
+                  aria-describedby="lblFrom"
+                  required
+                />
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text input-group-icon" id="lblTo"
+                    ><i class="fa-solid fa-plane-arrival"></i
+                  ></span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="To"
+                  name="to"
+                  id="to"
+                  aria-label="to"
+                  aria-describedby="lblTo"
+                  required
+                />
+              </div>
+              <div class="input-group mb-3" id="multi-city-depart">
+                <div class="input-group-prepend">
+                  <span class="input-group-text input-group-icon" id="lblDepart"
+                    ><i class="fa-solid fa-calendar-days"></i
+                  ></span>
+                </div>
+                <input
+                  class="form-control"
+                  placeholder="Departure Date"
+                  onfocus="(this.type='date')"
+                  onblur="(this.type='text')"
+                  name="depart"
+                  id="depart"
+                  aria-label="depart"
+                  aria-describedby="lblDepart"
+                  required
+                />
+              </div>
+            </br>
+              <a href="#" id="addFlight">+ Add another flight</a>
+            </div>
+            <input
+              type="submit"
+              name="btnSubmit"
+              class="btn btn-primary btn-sm w-100"
+              value="Submit"
+              onclick="validateForm()"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
